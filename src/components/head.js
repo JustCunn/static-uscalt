@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from "./media/logo.png";
 import "./head.css";
 import Ham from './ham.js';

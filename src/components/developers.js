@@ -8,8 +8,7 @@ class Developers extends React.Component {
 
     render() {
 
-        const jDesc = "Justin Cunningham is a 17 year old developer and co-founder of Uscalt. He is interested in creating a more equal interent, \
-                       especially in relation to software development and making research in AI and Machine Learning as open as possible. He's taken \
+        const jDesc = "Justin Cunningham is a 17 year old developer and co-founder of Uscalt. He is interested in creating a more equal interent, especially in relation to software development and making research in AI and Machine Learning as open as possible. He's taken \
                        part in various maths and science competitions like the BT Young Scientist, where he won his category for work in Braille and in NLP. \
                        He was chosen to take part in the BTYS Business Bootcamp in 2020"
 

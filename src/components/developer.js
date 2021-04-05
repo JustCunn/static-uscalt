@@ -29,9 +29,9 @@ class Developer extends React.Component {
                         {this.props.desc}
                     </div>
                     <div className="dev-social">
-                        <a href={this.props.twitter} className="fa fa-twitter" id="dev-social-icon"></a>
-                        <a href={this.props.linkedin} className="fa fa-linkedin" id="dev-social-icon"></a>
-                        <a href={this.props.email} className="fa fa-envelope-square" id="dev-social-icon"></a>
+                        <a href={this.props.twitter} className="fa fa-twitter" id="dev-social-icon"> </a>
+                        <a href={this.props.linkedin} className="fa fa-linkedin" id="dev-social-icon"> </a>
+                        <a href={this.props.email} className="fa fa-envelope-square" id="dev-social-icon"> </a>
                     </div>
                 </div>
             </div>

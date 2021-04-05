@@ -2,9 +2,6 @@ import React from 'react';
 import './ham.css';
 
 class Ham extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleChange = () => {
         var open = !this.props.open;

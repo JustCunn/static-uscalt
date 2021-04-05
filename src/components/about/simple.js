@@ -1,7 +1,6 @@
 import React from 'react';
 import './simple.css';
 import Tgif from '../media/trangif.gif';
-import TSact from '../media/transaction.png';
 import Tstatic from '../media/transtatic.png';
 import Mobile from '../media/mobile_transtatic.png';
 

@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './hamnav.css';
 import { Link } from 'react-router-dom';
 
 class Hamnav extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     handleChange = () => {
         var open = !this.props.open;
