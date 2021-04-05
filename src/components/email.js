@@ -13,16 +13,29 @@ class Email extends React.Component {
         this.state = {email: ""}
     }
 
-      handleChange = e => this.setState({ [e.target.name]: e.target.value });
+    handleSubmit = e => {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "email-form", ...this.state })
+      })
+        .then(() => alert("Thanks for your interest in Uscalt! We hopt to be in touch soon."))
+        .catch(error => alert(Error));
 
-      render() {
-          return (
-            <form name="email-form" method="POST" data-netlify="true" >
-                <input type="text" name="email" placeholder="Email address" id="email-input"/>
-                <button id="email-submit">Submit</button>
-            </form>
-          )
-      }
+      e.preventDefault();
+    };
+    
+    handleChange = e => this.setState({ [e.target.name]: e.target.value });
+
+    render() {
+      const { email } = this.state
+        return (
+          <form onSubmit={this.handleSubmit}>
+              <input type="email" name="email" placeholder="Email address" value={email} id="email-input" onChange={this.handleChange}/>
+              <button type="submit" id="email-submit">Submit</button>
+          </form>
+        )
+    }
 }
 
 export default Email
