@@ -19,7 +19,7 @@ class Email extends React.Component {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encode({ "form-name": "email", ...this.state })
         })
-          .then(() => alert("Thanks for taking an interest in Uscalt!"))
+          .then(() => alert("Thanks for taking an interest in Uscalt! We hope to be in touch soon."))
           .catch(error => alert(error));
   
         e.preventDefault();
@@ -29,7 +29,7 @@ class Email extends React.Component {
 
       render() {
           return (
-            <form onSubmit={this.handleSubmit} >
+            <form netlify onSubmit={this.handleSubmit} >
                 <input type="text" name="email" placeholder="Email address" id="email-input"/>
                 <button id="email-submit">Submit</button>
             </form>

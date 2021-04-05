@@ -12,7 +12,7 @@ class Info extends React.Component {
                         Register your interest
                     </div>
                     <div id="register-info">
-                        Submit your email below and we'll keep you up to date on the development of Uscalt. <br/>
+                        Submit your email below and we'll keep you up to date on the development of Uscalt and notify you when features go live.<br/>
                         We hope to have news on our development soon.
                     </div>
                     <Email/>

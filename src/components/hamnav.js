@@ -6,7 +6,6 @@ class Hamnav extends React.Component {
 
     handleChange = () => {
         var open = !this.props.open;
-        console.log(open)
         this.props.onOpenChange(open);
     }
 
@@ -17,14 +16,13 @@ class Hamnav extends React.Component {
             left: this.props.open ? '0%' : '100%',
             position: 'fixed',
             top: '0',
-            display: this.props.open ? 'flex' : 'flex',
+            display: 'flex',
             zIndex: '5',
             alignItems: 'center',
             justifyContent: 'center'
         }
 
         const navStyle = {
-            display: 'flex',
             height: '50%',
             textDecoration: 'None',
             alignItems: 'center',
@@ -49,7 +47,6 @@ class Hamnav extends React.Component {
             MozTransition: 'all 0.2s ease-in-out',
             animation: this.props.open ? '0.4s ease-in-out 0s 1 slideRight' : '',
             MozAnimation: this.props.open ? '0.4s ease-in-out 0s 1 slideRight' : '',
-            animationFillMode: 'both'
         }
 
         const liStyleD = {
@@ -61,7 +58,6 @@ class Hamnav extends React.Component {
             MozTransition: 'all 0.2s ease-in-out',
             animation: this.props.open ? '0.4s ease-in-out 0.1s 1 slideRight' : '',
             MozAnimation: this.props.open ? '0.4s ease-in-out 0.1s 1 slideRight' : '',
-            animationFillMode: 'both'
         }
 
         const liStyleA = {
@@ -73,7 +69,6 @@ class Hamnav extends React.Component {
             MozTransition: 'all 0.2s ease-in-out',
             animation: this.props.open ? '0.4s ease-in-out 0.2s 1 slideRight' : '',
             MozAnimation: this.props.open ? '0.4s ease-in-out 0.2s 1 slideRight' : '',
-            animationFillMode: 'both'
         }
 
         return(
