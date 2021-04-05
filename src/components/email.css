@@ -1,0 +1,36 @@
+#email-input {
+    height: 3.5em;
+    width: 65%;
+    border: none;
+    padding: 0 0 0 0.4em;
+    margin-right: 2em;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+#email-submit {
+    height: 3.5em;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    width: 15%;
+    background-color: white;
+    color: #004d81;
+}
+
+#email-submit:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+
+    #email-input {
+        width: 14em;
+        padding: 0 0 0 0.5em;
+        margin: 0 0.75em 0 0;
+    }
+
+    #email-submit {
+        width: 4em;
+    }
+}

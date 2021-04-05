@@ -1,0 +1,25 @@
+@media screen and (max-width: 1024px) {
+
+    .hamnav-container {
+        background-color: #004d81;
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+.hamnav-link:hover {
+    font-weight: bold;
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0%;
+        -moz-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0);
+        -moz-transform: translateX(0);
+    }
+}

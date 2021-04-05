@@ -1,0 +1,62 @@
+.privacy-container {
+    background-color: #004d81;
+    display: flex;
+    align-items: center;
+    height: 20em;
+}
+
+.privacy-img-container {
+    height: 10em;
+    width: 10em;
+    flex: 1;
+}
+
+.privacy-title {
+    font-size: 4.5em;
+    margin: 0 0 0.5em 0;
+    color: white;
+    font-weight: bolder;
+    animation: 0.6s ease-in-out 0s 1 slideUp;
+    animation-fill-mode: both;
+}
+
+.privacy-desc {
+    color: white;
+    animation: 0.6s ease-in-out 0.1s 1 slideUp;
+    animation-fill-mode: both;
+}
+
+.privacy-text-container {
+    flex: 3;
+    padding: 0 0 0 6em;
+}
+
+@media screen and (max-width: 1024px) {
+    .privacy-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 25em;
+    }
+
+    .privacy-text-container {
+        padding: 0 1em 0 1em;
+        flex: 1;
+    }
+
+    .privacy-title {
+        margin: 0.5em 0 0.5em 0;
+        text-align: center;
+    }
+
+    .privacy-img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .privacy-img-container img {
+        height: 8em;
+        width: 8em;
+    }
+}
