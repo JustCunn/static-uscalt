@@ -13,23 +13,11 @@ class Email extends React.Component {
         this.state = {email: ""}
     }
 
-    handleSubmit = e => {
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "email", ...this.state })
-        })
-          .then(() => alert("Thanks for taking an interest in Uscalt! We hope to be in touch soon."))
-          .catch(error => alert(error));
-  
-        e.preventDefault();
-      };
-
       handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
       render() {
           return (
-            <form netlify onSubmit={this.handleSubmit} >
+            <form name="email-form" method="POST" data-netlify="true" >
                 <input type="text" name="email" placeholder="Email address" id="email-input"/>
                 <button id="email-submit">Submit</button>
             </form>
