@@ -1,0 +1,119 @@
+$uscalt-blue: #004d81;
+
+.nav-container {
+    background-color: $uscalt-blue;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    min-width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.dash-nav-links {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links-ul {
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links-ul li {
+    list-style: none;
+    width: 90%;
+}
+
+.nav-room-header {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    width: 90%;
+    padding-left: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+hr {
+    width: 90%;
+    border-width: 0px;
+    color: white;
+    background-color: white;
+    height: 1px;
+}
+
+.dash-nav-link {
+    text-decoration: none;
+    padding-left: 1em;
+    display: block;
+    height: 2em;
+    padding-top: 0.5em;
+    border-radius: 3px;
+    transition: all 0.2s ease-in;
+    color: white;
+}
+
+#nav-li-home {
+    //margin-bottom: 1em;
+}
+
+#nav-li-search {
+    //margin-bottom: 1em;
+}
+
+#nav-li-transactions {
+    //margin-bottom: 1em;
+}
+
+.dash-nav-link:hover {
+    color: $uscalt-blue;
+    background-color: white;
+}
+
+.nav-user-container {
+    height: 3em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 1em;
+    color: white;
+    font-weight: bolder;
+    background-color: $uscalt-blue;
+    z-index: 4;
+}
+
+.nav-user-container:hover {
+    cursor: pointer;
+}
+
+.nav-user-options-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2.8em;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    background-color: $uscalt-blue;
+    border-bottom-right-radius: 10px;
+}
+
+.nav-user-options-logout:hover {
+    transition: all 0.2s ease-in-out;
+    font-weight: bolder;
+    cursor: pointer;
+}

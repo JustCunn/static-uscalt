@@ -1,10 +1,15 @@
 import React from 'react';
 import "./cover.css";
 import Lines from "./media/ellipse2.png";
+import Header from "./head.js";
+import Footer from "./footer.js";
+import Info from "./register.js";
 
 class Cover extends React.Component {
     render() {
         return (
+            <>
+            <Header/>
             <div className="cover-container">
                 <img src={Lines} alt="lines"/>
                 <div className="cover-text">
@@ -18,6 +23,9 @@ class Cover extends React.Component {
                     </div>
                 </div>
             </div>
+            <Info/>
+            <Footer/>
+            </>
         )
     }
 }

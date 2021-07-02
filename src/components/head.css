@@ -15,7 +15,7 @@
 }
 
 nav {
-    flex: 2;
+    flex: 4;
 }
 
 .nav-links {
@@ -23,16 +23,18 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    color: #004d81;
 }
 
 .nav-links Link {
     text-decoration: none;
+    color: #004d81;
 }
 
 .nav-link {
     list-style: none;
-    color: black;
     font-size: 20px;
+    color: #004d81;
 }
 
 .inform-container {
@@ -41,7 +43,7 @@ nav {
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    padding-right: 10em;
+    padding-right: 1em;
 }
 
 .inform-button {
@@ -78,7 +80,6 @@ img {
 }
 
 .nav-link:hover {
-    color: #004d81;
     font-weight: bolder;
 }
 

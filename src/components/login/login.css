@@ -1,0 +1,120 @@
+.login-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-div {
+  background-color: #004d81;
+  -webkit-box-shadow: 0px 0px 20px 5px #a1a1a1;
+          box-shadow: 0px 0px 20px 5px #a1a1a1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 25em;
+  width: 35em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 10px;
+  padding: 2em;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.register-div {
+  position: absolute;
+  top: 75%;
+  width: 35em;
+  color: #004d81;
+  padding: 0 0 0 0.5em;
+}
+
+.register-div span:hover {
+  cursor: pointer;
+}
+
+.login-title {
+  text-align: center;
+  color: white;
+  width: 100%;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.login-fields {
+  height: 60%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1em;
+}
+
+.login-field-input {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border-width: 0;
+  padding: 0 0 0 1em;
+  font-size: 24px;
+}
+
+#login-email {
+  margin-bottom: 1em;
+}
+
+#login-password {
+  margin: 0 0 1.5em;
+}
+
+.login-field {
+  width: 30em;
+  height: 5em;
+}
+
+.login-submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.login-submit-button {
+  width: 12em;
+  height: 5em;
+  background-color: white;
+  border-radius: 10px;
+  color: #004d81;
+}
+/*# sourceMappingURL=login.css.map */

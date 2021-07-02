@@ -3,6 +3,8 @@ import "./developers.css";
 import Developer from "./developer.js";
 import Justin from "./media/justin.jpg";
 import Fintan from "./media/flalor.jpg";
+import Header from "./head.js";
+import Footer from "./footer.js";
 
 class Developers extends React.Component {
 
@@ -20,6 +22,8 @@ class Developers extends React.Component {
                         of good, clean data in those fields. We encourage you to get in touch if you have questions about what we do or just want to give \
                         us your opinion."
         return (
+            <>
+            <Header/>
             <div className="developers-cont">
                 <div className="developers-intro-container">
                     <div className="developers-title">
@@ -34,6 +38,8 @@ class Developers extends React.Component {
                 <Developer id="fintan-dev" delay={0.3} margin={"1em"} image={Fintan} name={"Fintan Lalor"} desc={fDesc} twitter={"https://twitter.com/GREENLEADER12"}
                 linkedin={"https://www.linkedin.com/in/fintan-lalor-8722a0209/"} email={"mailto:flalor@uscalt.com"}/>
             </div>
+            <Footer/>
+            </>
         )
     }
 

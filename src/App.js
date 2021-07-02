@@ -1,24 +1,39 @@
 import './App.css';
-import {React, Fragment} from 'react';
-import Header from './components/head.js';
+import {React, Fragment, useState } from 'react';
 import Cover from "./components/cover.js";
-import Info from "./components/register.js";
-import Footer from "./components/footer.js";
 import Developers from "./components/developers.js";
 import About from "./components/about/about.js";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import Login from "./components/login/login.js";
+import Dashboard from "./components/dashboard/dashboard.js";
+import useToken from './components/useToken.js';
+import {BrowserRouter as Router, Route, useHistory} from "react-router-dom";
 
 function App() {
+  const { token, setToken } = useToken();
+  const [darkMode, setDarkMode] = useState(false);
+  const history = useHistory();
+
+  const handleDMClick = () => {
+    setDarkMode(!darkMode)
+    console.log(darkMode)
+  }
+
+  const bg = {
+    backgroundColor: darkMode ? 'black' : 'white',
+    transition: 'all 0.6s ease-in-out'
+  }
   return (
     <>
+    <div style={bg}>
       <Router>
-            <Header/>
             <Route path="/" exact component={Cover}/>
-            <Route path="/" exact component={Info}/>
             <Route path="/developers" exact component={Developers}/>
             <Route path="/about" exact component={About}/>
-            <Footer/>
+            {/*<Route path="/signin" exact component={Login}/>*/}
+            <Route path="/dashboard/" render={(props) => (<Dashboard {...props} isAuthed={!token} history={history}
+            onClick={handleDMClick} darkMode={darkMode} setToken={setToken}/>)}/>
       </Router>
+      </div>
     </>
   );
 }

@@ -1,0 +1,39 @@
+.page-room-img {
+  background-color: gray;
+  height: 12em;
+  width: 12em;
+  border-radius: 10px;
+  margin: 0 1em 0 0;
+}
+
+.page-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1em;
+  color: #004d81;
+}
+
+.page-room-name {
+  font-size: 5em;
+  font-weight: bolder;
+  color: #004d81;
+}
+
+.page-room-dev {
+  font-size: 2em;
+}
+
+.page-info-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+/*# sourceMappingURL=RoomPage.css.map */
