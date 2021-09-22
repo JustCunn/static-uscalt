@@ -99,7 +99,7 @@
   border-radius: 7px;
 }
 
-.link-manage-info {
+.link-manage-info, .link-buy-info {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -114,6 +114,16 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.link-buy-container {
+  margin-bottom: 1em;
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e8fff9;
+  border-radius: 7px;
 }
 
 .link-display-name {

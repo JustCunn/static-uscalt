@@ -67,12 +67,20 @@ $uscalt-blue: #004d81;
     border-radius: 7px;
 }
 
-.link-manage-info {
+.link-manage-info, .link-buy-info {
     flex: 1;
     height: 3em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.link-buy-container {
+    margin-bottom: 1em;
+    padding: 1em;
+    display: flex;
+    background-color: #e8fff9;
+    border-radius: 7px;
 }
 
 .link-display-name {

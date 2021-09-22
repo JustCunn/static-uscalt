@@ -57,6 +57,61 @@ function LinkManageItem(props) {
     )
 }
 
+function LinkBuyItem(props) {
+
+    const toggleLink = () => {
+        if (props.uData.includes(props.link_id)) {
+            const array = props.uData;
+            const index = array.indexOf(props.link_id);
+
+            array.splice(index, 1);
+            console.log(array)
+
+            fetch("http://127.0.0.1:8000/api/user/14/", {
+                method: 'PUT',
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem("token")}`,
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "mylinks": array,
+                })
+            })
+            .then(() => props.setLinks(array))
+        }
+        else {
+            const array = props.uData;
+
+            array.push(props.link_id)
+
+            fetch("http://127.0.0.1:8000/api/user/14/", {
+                method: 'PUT',
+                headers: {
+                    "Authorization": `Token ${localStorage.getItem("token")}`,
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "mylinks": array,
+                })
+            })
+            .then(() => props.setLinks(array))
+        }
+        console.log("click")
+    }
+
+    return (
+        <div className="link-buy-container">
+            <div className="link-buy-info">
+                <div className="link-display-name">{props.name}</div>
+                <div className="link-desc">{props.desc}</div>
+            </div>
+            <div className="link-toggle-container">
+                Request Data
+            </div>
+        </div>
+    )
+}
+
 export default function RoomPage(props) {
     const [info, setInfo] = useState([])
     const [links, setLinks] = useState([])
@@ -115,7 +170,10 @@ export default function RoomPage(props) {
                     <div className="page-buy" style={buyStyle} onClick={() => setBuy(true)}>Retrieve Data</div>
                 </div>
                 {isLoading ? null : (
-                    buy ? null : (
+                    buy ? (info.links.map((item, index) => (
+                        <LinkBuyItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
+                    )))
+                    : (
                     info.links.map((item, index) => (
                         <LinkManageItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
                     )))
