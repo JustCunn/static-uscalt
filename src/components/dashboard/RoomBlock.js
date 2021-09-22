@@ -2,7 +2,7 @@ import { React, useState, useLayoutEffect, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './RoomBlock.css';
 
-export default function RoomBlock() {
+export default function RoomBlock(props) {
     const [blockWidth, setBlockWidth] = useState('20em');
     const [zdex, setZdex] = useState('1');
     const ref = useRef(null);
@@ -29,15 +29,15 @@ export default function RoomBlock() {
                <div className="block-room-img">{/*Replace div with img block*/}</div>
                <div className="block-info-container">
                     <div className="block-room-name">
-                        Room Name
+                        {props.name}
                     </div>
                     <div className="block-room-dev">
-                        Developer Co.
+                        {props.developer}
                     </div>
                </div>
            </div>
            <div className="block-room-permissions">
-               <p>ROOM is permitted to distribute the following</p>
+               <p>{props.name} is permitted to distribute the following</p>
                    <ul /*style={ulHeight}*/ ref={ref}>
                        <li>Data Type 1</li>
                        <li>Data Type 2</li>
@@ -46,7 +46,7 @@ export default function RoomBlock() {
                        <li>Data Type 5</li>
                    </ul>
             </div>
-            <Link to="/dashboard/rooms/Spotify" className="block-button-container">
+            <Link to={`/dashboard/rooms/${props.name}`} className="block-button-container">
                 <div onClick={handleClick} className="block-button">
                     View More
                 </div>

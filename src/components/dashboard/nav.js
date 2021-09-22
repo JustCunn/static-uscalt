@@ -53,6 +53,11 @@ export default function Nav(props) {
         color: (currentNav === 'search') ? '#004d81' : null
     }
 
+    const isClickedStyleDev = {
+        backgroundColor: (currentNav === 'dev') ? 'white' : null,
+        color: (currentNav === 'dev') ? '#004d81' : null
+    }
+
     const getUsername = async () => {
         //Fetches username from server
         await fetch("http://127.0.0.1:8000/api/profile/", {
@@ -108,6 +113,10 @@ export default function Nav(props) {
                         <li id="nav-li-preferences">
                             <Link to="#" onClick={() => setCurrentNav('preferences')} style={isClickedStylePreferences}
                             className="dash-nav-link">Preferences</Link>
+                        </li>
+                        <li id="nav-li-dev">
+                            <Link to="/dashboard/dev" onClick={() => setCurrentNav('dev')} style={isClickedStyleDev}
+                            className="dash-nav-link">Developer Tools</Link>
                         </li>
                     </ul>
                 </div>

@@ -10,7 +10,7 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        const okok = await fetch("http://127.0.0.1:8000/api/profile/", {
+        await fetch("http://127.0.0.1:8000/api/profile/", {
             method: 'GET',
             headers: {
                 "Authorization": `Token ${localStorage.getItem("token")}`

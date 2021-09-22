@@ -1,0 +1,89 @@
+$uscalt-blue: #004d81;
+
+.dev-room-title {
+    color: $uscalt-blue;
+    font-size: 3em;
+    font-weight: bolder;
+    margin-bottom: 0.7em;
+}
+
+.dev-rooms-ul-li {
+    background-color: rgb(235, 235, 235);
+    height: 1em;
+}
+
+.dev-room-table-commands {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
+.dev-room-table-wrapper p {
+    font-size: 36px;
+    margin: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+tr:nth-child(1) {
+    background-color: rgb(245, 245, 245)!important;
+    color: black!important;
+}
+
+tr:nth-child(odd) {
+    background-color: $uscalt-blue;
+    color: white;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+}
+
+.sub-tr:hover {
+    cursor: pointer;
+}
+
+.modal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(162, 162, 162, 0.6);
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-card{
+    height: 50em;
+    width: 70em;
+    padding: 1em;
+    background-color: white;
+}
+
+.modal-title-div {
+    font-size: 2em;
+    font-weight: bolder;
+    color: $uscalt-blue;
+    display: flex;
+}
+
+.modal-title {
+    flex: 6;
+}
+
+.modal-close:hover {
+    cursor: pointer;
+}
+
+.dev-room-table-wrapper p:hover {
+    font-weight: bolder;
+    color: $uscalt-blue;
+    cursor: pointer;
+}
