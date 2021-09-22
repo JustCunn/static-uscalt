@@ -40,7 +40,7 @@ class Simple extends React.Component {
                         Simplicity
                     </div>
                     <div className="simple-desc">
-                        Uscalt will be easy to use, allowing data to be distributed in just a few taps. There won't be any need for in-depth editing by the user
+                        Uscalt will be easy to use, allowing data to be distributed in just a few taps. There won't be any need for in-depth editing by the user.
                     </div>
                 </div>
             </div>

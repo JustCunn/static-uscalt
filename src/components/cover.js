@@ -12,8 +12,8 @@ class Cover extends React.Component {
                         working towards data <br/> sovereignty
                     </div>
                     <div className="cover-desc">
-                        We're creating an easy-to-use platform for the Web3 Data Economy. Uscalt will allow users to authorise their data from online platforms
-                        to be sold and receive a return on the sale. <br/><br/> Researchers will be able to harness data that was never available before, powering even stronger
+                        We're creating an easy-to-use platform for a new Data Ecosystem. Uscalt will allow users to authorise their data from online platforms
+                        to be sold and developers will be given the tools to participate. <br/><br/> Researchers will be able to harness data that was never available before, powering even stronger
                         AI and Machine Learning projects
                     </div>
                 </div>

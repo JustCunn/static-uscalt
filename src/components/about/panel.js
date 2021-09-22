@@ -37,7 +37,7 @@ class Panel extends React.Component {
                         opening up datasets
                     </div>
                     <div className="panel-desc">
-                        Uscalt will open up access to datasets never available before by allowing users to sell their data in an open marketplace. This will power the growth of AI, machine learning and businesses.
+                        Uscalt will open up access to datasets never available before by allowing users to sell their data in an open ecosystem. This will power the growth of AI, machine learning and businesses.
                         More datasets will be available to more people, levelling the playing field.
                     </div>
                     <div style={{opacity: this.state.visible}} className="hover-prompt">

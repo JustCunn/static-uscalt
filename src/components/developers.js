@@ -16,7 +16,7 @@ class Developers extends React.Component {
                         at BTYS 2021 therefore he also understands the importance of data. He is also involved in TCD’s Walton Club and was chosen to take part in the BTYS Business \
                         Bootcamp in 2021."
 
-        const devDesc = "We are Uscalt. We're working towards data sovereignty and linking with applications to do so. We have won national awards for our work on in Machine Learning and Neural Machine Translation and know the importance \
+        const devDesc = "We are Uscalt. We're working towards data sovereignty. We have won national awards for our work on in Machine Learning and Neural Machine Translation and know the importance \
                         of good, clean data in those fields. We encourage you to get in touch if you have questions about what we do or just want to give \
                         us your opinion."
         return (
