@@ -1,6 +1,6 @@
 .simple-container img {
     height: 10em;
-    clip-path: inset(10px 20px 10px 20px);
+    /*clip-path: inset(10px 20px 10px 20px);*/
 }
 
 .img-container {
@@ -19,11 +19,11 @@
     height: 20em;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     padding: 0 1em 0 1em;
 }
 
 .simple-text-container {
-    margin: 0 0 0 3.8em;
     display: flex;
     flex-direction: column;
 }
