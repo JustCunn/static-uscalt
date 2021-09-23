@@ -100,10 +100,10 @@ export default function Nav(props) {
                             <Link to="/dashboard/rooms/manage" onClick={() => setCurrentNav('rooms')} style={isClickedStyleRooms}
                             className="dash-nav-link">Manage My Active Rooms</Link>  
                         </li>
-                        <li id="nav-li-search">
+                        {/*<li id="nav-li-search">
                             <Link to="/dashboard/home" onClick={() => setCurrentNav('search')} style={isClickedStyleSearch}
                             className="dash-nav-link">Find Data Rooms</Link> 
-                        </li>
+        </li>*/}
                         <hr></hr>
                         <li id="nav-li-transactions">
                             <Link to="#" onClick={() => setCurrentNav('transactions')} style={isClickedStyleTransactions}
