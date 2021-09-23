@@ -1,3 +1,8 @@
+* {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-user-select: none;
+}
+
 .cover-container {
     background: url(./media/ellipse2.png) no-repeat;
     position: relative;
@@ -69,6 +74,7 @@
 
     .cover-text {
         width: 80%;
+        z-index: 3;
     }
 
     .cover-head {

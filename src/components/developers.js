@@ -8,12 +8,12 @@ class Developers extends React.Component {
 
     render() {
 
-        const jDesc = "Justin Cunningham is a 17 year old developer and co-founder of Uscalt. He is interested in creating a more equal interent, especially in relation to software development and making research in AI and Machine Learning as open as possible. He's taken \
+        const jDesc = "Justin Cunningham is a 17 year old developer. He is interested in creating a more equal interent, especially in relation to software development and making research in AI and Machine Learning as open as possible. He's taken \
                        part in various maths and science competitions like the BT Young Scientist, where he won his category for work in Braille and in NLP. \
-                       He was chosen to take part in the BTYS Business Bootcamp in 2020"
+                       He took part in the BTYS Business Bootcamp in 2020"
 
-        const fDesc = "Fintan is a 16 year old developer and co-founder of Uscalt. He's passionate about data sovereignty having previously worked on Aistrigh, an NMT toolkit for the English - Irish Language pair, which won 2 awards \
-                        at BTYS 2021 therefore he also understands the importance of data. He is also involved in TCD’s Walton Club and was chosen to take part in the BTYS Business \
+        const fDesc = "Fintan is a 16 year old developer. He's passionate about data sovereignty having previously worked on Aistrigh, an NMT toolkit for the English - Irish Language pair, which won 2 awards \
+                        at BTYS 2021 therefore he also understands the importance of data. He is also involved in TCD’s Walton Club and took part in the BTYS Business \
                         Bootcamp in 2021."
 
         const devDesc = "We are Uscalt. We're working towards data sovereignty. We have won national awards for our work on in Machine Learning and Neural Machine Translation and know the importance \

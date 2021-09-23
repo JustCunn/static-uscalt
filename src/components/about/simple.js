@@ -32,9 +32,6 @@ class Simple extends React.Component {
                 {/*<div onMouseOver={handleHover} onMouseOut={handleUp} className="img-container">
                     <img src={this.state.tranMedia} id='off' alt=""/>
         </div>*/}
-                <div className="img-container">
-                    <img src={Mobile} id="on" alt=""/>
-                </div>
                 <div className="simple-text-container">
                     <div className="simple-title">
                         {this.props.title}

@@ -16,7 +16,7 @@
 
 .simple-container {
     background-color: #ecf5fa;
-    height: 20em;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -26,6 +26,7 @@
 .simple-text-container {
     display: flex;
     flex-direction: column;
+    margin: 3em 0 3em 0;
 }
 
 .simple-title {
@@ -61,7 +62,7 @@
     }
 
     .simple-text-container {
-        margin: 0 0 1.5em 0;
+        margin: 3em 0 3em 0;
     }
 
     .simple-title {
