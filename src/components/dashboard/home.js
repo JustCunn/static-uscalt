@@ -17,7 +17,9 @@ class Home extends React.Component {
             },
         })
         .then(data => data.json())
-        .then(data => this.setState({home: data.username}))
+        .then(data => {
+            this.setState({home: data.username})
+        console.log(data)})
     }
 
     render() {
@@ -43,7 +45,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div className="home-recentb-container">
-                        X
+                        
                     </div>
                 </div>
             </div>

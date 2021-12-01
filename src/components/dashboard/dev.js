@@ -1,7 +1,11 @@
 import { React, useState, useEffect }from 'react';
+import { Link } from "react-router-dom";
 import './dev.css';
 
 function DevModal(props) {
+    useEffect(() => {
+        console.log(props.name)
+    })
     return (
         <div className="modal-background" style={{display: props.modalVisible ? 'flex' : 'none'}}>
             <div className="modal-card">
@@ -14,37 +18,115 @@ function DevModal(props) {
     )
 }
 
+function registerRoom(room_name, description, dev_name) {
+    fetch("http://127.0.0.1:8000/api/registerroom/", {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+            "name": room_name,
+            "brief_desc": description,
+            "dev_name": dev_name
+        })
+    })
+    .then(data => data.json())
+    .then(() => console.log(2))
+}
+
+function AddRoom(props) {
+    const [name, setName] = useState();
+    const [desc, setDesc] = useState();
+    const [devName, setDevName] = useState();
+
+    const handleNameChange = (e) => {
+        setName(e.target.value)
+    }
+
+    const handleDescChange = (e) => {
+        setDesc(e.target.value)
+    }
+
+    const handleDevNameChange = (e) => {
+        setDevName(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        registerRoom(name, desc, devName);
+    }
+
+    const addStyle = {
+        display: props.see ? 'flex' : 'none'
+    }
+
+    return (
+        <div className="add-link-wrapper" style={addStyle}>
+            <p>Create a Room</p>
+            <div className="manage-login-fields">
+                <form onSubmit={handleSubmit}>
+                    <div className="manage-field" id="manage-display-name">
+                        <input type="text" className="manage-field-input" id="manage-display-name-input" 
+                        placeholder="Room Name" value={name} onChange={handleNameChange}/>
+                    </div>
+                    <div className="manage-field" id="manage-display-name">
+                        <input type="text" className="manage-field-input" id="manage-display-name-input" 
+                        placeholder="Developer Name" value={devName} onChange={handleDevNameChange}/>
+                    </div>
+                    <div className="manage-field" id="manage-desc-name">
+                        <input type="textarea" className="manage-field-input" id="manage-desc-input" 
+                        placeholder="Description" value={desc} onChange={handleDescChange}/>
+                    </div>
+                    <div className="manage-submit">
+                        <button className="manage-submit-button" type="submit">Create</button>
+                    </div>
+                </form>
+                <div className="manage-cancel" onClick={() => props.setSee(false)}>
+                    Cancel
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Dev() {
-    const [rooms, setRooms] = useState(["HAHAH", "AHAHA"])
+    const [rooms, setRooms] = useState([])
+    const [see, setSee] = useState(false);
     const [modalVisible, setModalVisible] = useState(false)
 
     const getRooms = async () => {
-        await fetch("http://127.0.0.1:8000/api/rooms/", {
+        const data = await fetch("http://127.0.0.1:8000/api/rooms/", {
             method: 'GET',
             headers: {
-                "Authorization": `Token ${localStorage.getItem("token")}`
+                "Authorization": `Token ${localStorage.getItem("token")}`,
+                "Accept": "application/json",
             }
         })
-        .then(data => data.json())
-        .then(data => setRooms(data));
-        rooms.forEach(element => console.log(element.name))
+
+        return data.json()
     }
 
+    const LinkStyle = {
+        color: "black"
+    }
 
     useEffect(() => {
-        getRooms()
-        console.log(modalVisible)
+        getRooms().then(data => setRooms(data))
     }, []);
 
+    if (rooms === []) {
+        return null
+    }
     return (
         <div className="dev-wrapper">
             <div className="dev-room-wrapper">
+                <AddRoom see={see} setSee={setSee}/>
                 <div className="dev-room-title">
                     Manage Your Data Rooms
                 </div>
                 <div className="dev-room-table-wrapper">
                     <div className="dev-room-table-commands">
-                        <p>+</p>
+                        <p onClick={() => setSee(true)}>+</p>
                         <p>-</p>
                     </div>
                     <table className="dev-room-list">
@@ -55,15 +137,13 @@ export default function Dev() {
                                 <th>Developer</th>
                             </tr>
                             {rooms.map((element, index) => (
-                                <>
-                                <tr className="sub-tr" onClick={() => setModalVisible(!modalVisible)}>
-                                    <td /*className="dev-rooms-ul-li"*/ >{element.name}</td>
-                                    <td>{element.brief_desc}</td>
-                                    <td>{element.dev_name}</td>
-                                </tr>
-                                <DevModal key={index} modalVisible={modalVisible} setModalVisible={setModalVisible}
-                                name={element.name}/>
-                                </>
+                                    <tr /*key={index}*/ className="sub-tr" onClick={() => setModalVisible(true)}>
+                                        <td><Link to={`/dashboard/room/${element.name}`} style={LinkStyle}>
+                                            {element.name}
+                                        </Link></td>
+                                        <td >{element.brief_desc}</td>
+                                        <td >{element.dev_name}</td>
+                                    </tr>
                             ))}
                         </tbody>
                     </table>
@@ -72,3 +152,5 @@ export default function Dev() {
         </div>
     )
 }
+
+/////

@@ -1,0 +1,156 @@
+.add-link-wrapper {
+  background-color: #004d81;
+  height: 60%;
+  width: 100%;
+  position: relative;
+  top: 130px;
+  left: 0;
+  margin-bottom: 100em;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 0.5em;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add-link-wrapper p {
+  margin-bottom: 1em;
+}
+
+.manage-field {
+  margin-bottom: 1em;
+}
+
+.manage-field-input {
+  width: 100%;
+  height: 3em;
+  border-radius: 5px;
+  border-width: 0;
+  padding-left: 1em;
+  font-size: 16px;
+}
+
+#manage-desc-input {
+  height: 8em !important;
+}
+
+.manage-submit-button {
+  width: 100%;
+  height: 3em;
+  border-radius: 7px;
+  border-width: 0;
+  color: #004d81;
+  background-color: #ecf5fa;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(162, 162, 162, 0.6);
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.modal-card {
+  height: 50em;
+  width: 80em;
+  padding: 1em;
+  background-color: white;
+}
+
+.modal-title-div {
+  font-weight: bolder;
+  color: #004d81;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal-header-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 0.5em;
+  font-size: 1em;
+}
+
+.add-link {
+  width: 100%;
+  height: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #004d81;
+  font-size: 14px;
+  color: white;
+  margin-bottom: 1em;
+}
+
+.modal-title {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+}
+
+.manage-room-list tr, th, td {
+  color: black;
+  font-weight: normal;
+  font-size: 8;
+}
+
+tr:nth-child(1) {
+  background-color: whitesmoke !important;
+  color: black !important;
+}
+
+tr:nth-child(odd) {
+  background-color: #004d81;
+  color: white !important;
+}
+
+table {
+  width: 100%;
+  font-size: 16px;
+}
+
+th, td {
+  text-align: left;
+  padding: 15px;
+}
+
+.sub-tr:hover {
+  cursor: pointer;
+}
+
+.add-link:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=ManageRoom.css.map */

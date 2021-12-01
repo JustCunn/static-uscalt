@@ -2,6 +2,19 @@ import { React , useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './RoomPage.css';
 
+function download(blob, filename) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    // the filename you want
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  }
+
 function LinkManageItem(props) {
 
     const toggleLink = () => {
@@ -59,44 +72,34 @@ function LinkManageItem(props) {
 
 function LinkBuyItem(props) {
 
-    const toggleLink = () => {
-        if (props.uData.includes(props.link_id)) {
-            const array = props.uData;
-            const index = array.indexOf(props.link_id);
-
-            array.splice(index, 1);
-            console.log(array)
-
-            fetch("http://127.0.0.1:8000/api/user/14/", {
-                method: 'PUT',
+    const toggleLink = async () => {
+        var fileDownload = require('js-file-download');
+        console.log(props.buyers.includes(props.uid))
+        if(!props.buyers.includes(props.uid)) {
+            console.log(2)
+            await fetch("http://127.0.0.1:8000/api/link/buy/", {
+                method: 'POST',
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("token")}`,
                     'content-type': 'application/json',
                 },
                 body: JSON.stringify({
-                    "mylinks": array,
+                    "link": props.link_id,
+                    "id": props.uid
                 })
             })
-            .then(() => props.setLinks(array))
         }
         else {
-            const array = props.uData;
-
-            array.push(props.link_id)
-
-            fetch("http://127.0.0.1:8000/api/user/14/", {
-                method: 'PUT',
+            const Res = await fetch(`http://127.0.0.1:8000/api/link/download/${props.link_id}/${props.uid}/`, {
+                method: 'GET',
                 headers: {
                     "Authorization": `Token ${localStorage.getItem("token")}`,
-                    'content-type': 'application/json',
+                    //"accept": "text/csv",
                 },
-                body: JSON.stringify({
-                    "mylinks": array,
-                })
             })
-            .then(() => props.setLinks(array))
+            //.then(data => fileDownload(data.body, 'filename.csv'))
+            Res.blob().then(blob => download(blob))
         }
-        console.log("click")
     }
 
     return (
@@ -105,8 +108,8 @@ function LinkBuyItem(props) {
                 <div className="link-display-name">{props.name}</div>
                 <div className="link-desc">{props.desc}</div>
             </div>
-            <div className="link-toggle-container">
-                Request Data
+            <div className="link-toggle-container" onClick={toggleLink}>
+                {props.buyers.includes(props.uid) ? "Download" : "Request Data"}
             </div>
         </div>
     )
@@ -118,22 +121,20 @@ export default function RoomPage(props) {
     const [isLoading, setLoading] = useState(true)
     const [userData, setUserData] = useState([])
     const [buy, setBuy] = useState(false)
+    const [uid, setUid] = useState(null);
     const { id } = useParams();
 
     async function fetchAPI() {
 
-        await fetch(`http://127.0.0.1:8000/api/user/14/`)
-                .then(data => data.json())
-                .then(data => {
-                    setUserData(data);
-                    console.log(data);
-                    setLinks(data.mylinks);
-                });
-
-        await fetch(`http://127.0.0.1:8000/api/room/${id}/`)
-                .then(data => data.json())
-                .then(data => setInfo(data))
-                .then(() => setLoading(false));
+        await fetch("http://127.0.0.1:8000/api/profile/", {
+            method: 'GET',
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("token")}`
+            },
+        })
+        .then(data => data.json())
+        .then(data => setUid(data.id))
+        .then()
     }
 
     const dataStyle = {
@@ -148,7 +149,21 @@ export default function RoomPage(props) {
 
     useEffect(() => {
         fetchAPI();
-    }, [])
+    })
+
+    useEffect(async () => {
+        await fetch(`http://127.0.0.1:8000/api/user/${uid}/`)
+                .then(data => data.json())
+                .then(data => {
+                    setUserData(data);
+                    setLinks(data.mylinks);
+                });
+
+        await fetch(`http://127.0.0.1:8000/api/room/${id}/`)
+                .then(data => data.json())
+                .then(data => setInfo(data))
+                .then(() => setLoading(false));
+    }, [uid])
 
     return (
         <div className="page-container">
@@ -171,7 +186,8 @@ export default function RoomPage(props) {
                 </div>
                 {isLoading ? null : (
                     buy ? (info.links.map((item, index) => (
-                        <LinkBuyItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
+                        <LinkBuyItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} uid={uid} setLinks={setLinks}
+                                    buyers={item.buyers}/>
                     )))
                     : (
                     info.links.map((item, index) => (
