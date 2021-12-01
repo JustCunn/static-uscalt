@@ -2,6 +2,10 @@ import { React , useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './RoomPage.css';
 
+let uid
+//let userData
+//let info
+
 function download(blob, filename) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -23,7 +27,6 @@ function LinkManageItem(props) {
             const index = array.indexOf(props.link_id);
 
             array.splice(index, 1);
-            console.log(array)
 
             fetch("http://127.0.0.1:8000/api/user/14/", {
                 method: 'PUT',
@@ -54,7 +57,6 @@ function LinkManageItem(props) {
             })
             .then(() => props.setLinks(array))
         }
-        console.log("click")
     }
 
     return (
@@ -76,7 +78,6 @@ function LinkBuyItem(props) {
         var fileDownload = require('js-file-download');
         console.log(props.buyers.includes(props.uid))
         if(!props.buyers.includes(props.uid)) {
-            console.log(2)
             await fetch("http://127.0.0.1:8000/api/link/buy/", {
                 method: 'POST',
                 headers: {
@@ -116,25 +117,39 @@ function LinkBuyItem(props) {
 }
 
 export default function RoomPage(props) {
-    const [info, setInfo] = useState([])
-    const [links, setLinks] = useState([])
-    const [isLoading, setLoading] = useState(true)
-    const [userData, setUserData] = useState([])
-    const [buy, setBuy] = useState(false)
-    const [uid, setUid] = useState(null);
+    const [info, setInfo] = useState([]);
+    const [links, setLinks] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [userData, setUserData] = useState([]);
+    const [buy, setBuy] = useState(false);
+    //const [uid, setUid] = useState();
     const { id } = useParams();
 
-    async function fetchAPI() {
+    async function fetchUID() {
 
-        await fetch("http://127.0.0.1:8000/api/profile/", {
+        const result = await fetch("http://127.0.0.1:8000/api/profile/", {
             method: 'GET',
             headers: {
-                "Authorization": `Token ${localStorage.getItem("token")}`
+                "Authorization": `Token ${localStorage.getItem("token")}`,
+                "accept": "application/json",
             },
         })
-        .then(data => data.json())
-        .then(data => setUid(data.id))
-        .then()
+
+        return result.json()
+    }
+
+    async function fetchUser() {
+
+        const result = await fetch(`http://127.0.0.1:8000/api/user/${uid}/`)
+
+        return result.json()
+    }
+
+    async function fetchRoom() {
+
+        const result = await fetch(`http://127.0.0.1:8000/api/room/${id}/`)
+
+        return result.json()
     }
 
     const dataStyle = {
@@ -147,23 +162,15 @@ export default function RoomPage(props) {
         backgroundColor: buy ? '#004d81' : 'white'
     }
 
-    useEffect(() => {
-        fetchAPI();
-    })
-
     useEffect(async () => {
-        await fetch(`http://127.0.0.1:8000/api/user/${uid}/`)
-                .then(data => data.json())
-                .then(data => {
-                    setUserData(data);
-                    setLinks(data.mylinks);
-                });
-
-        await fetch(`http://127.0.0.1:8000/api/room/${id}/`)
-                .then(data => data.json())
-                .then(data => setInfo(data))
-                .then(() => setLoading(false));
-    }, [uid])
+        uid = await fetchUID().then(data => data.id);
+        const userResult = await fetchUser()
+        const roomResult = await fetchRoom()
+        setUserData(userResult)
+        setInfo(roomResult)
+        setLinks(userResult.mylinks)
+        setLoading(false)
+    }, [links])
 
     return (
         <div className="page-container">
@@ -186,12 +193,12 @@ export default function RoomPage(props) {
                 </div>
                 {isLoading ? null : (
                     buy ? (info.links.map((item, index) => (
-                        <LinkBuyItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} uid={uid} setLinks={setLinks}
+                        <LinkBuyItem key={index} name={item.display_name} desc={item.desc} link_id={item.id} uData={links} uid={uid} setLinks={setLinks}
                                     buyers={item.buyers}/>
                     )))
                     : (
                     info.links.map((item, index) => (
-                        <LinkManageItem name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
+                        <LinkManageItem key={index} name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
                     )))
                     )}
             </div>

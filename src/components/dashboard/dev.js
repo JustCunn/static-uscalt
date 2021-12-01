@@ -2,7 +2,7 @@ import { React, useState, useEffect }from 'react';
 import { Link } from "react-router-dom";
 import './dev.css';
 
-function DevModal(props) {
+/*function DevModal(props) {
     useEffect(() => {
         console.log(props.name)
     })
@@ -16,13 +16,14 @@ function DevModal(props) {
             </div>
         </div>
     )
-}
+}*/
 
 function registerRoom(room_name, description, dev_name) {
     fetch("http://127.0.0.1:8000/api/registerroom/", {
         method: "POST",
         headers: {
             'content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
             "name": room_name,
@@ -30,8 +31,6 @@ function registerRoom(room_name, description, dev_name) {
             "dev_name": dev_name
         })
     })
-    .then(data => data.json())
-    .then(() => console.log(2))
 }
 
 function AddRoom(props) {
@@ -78,7 +77,7 @@ function AddRoom(props) {
                         placeholder="Description" value={desc} onChange={handleDescChange}/>
                     </div>
                     <div className="manage-submit">
-                        <button className="manage-submit-button" type="submit">Create</button>
+                        <button onClick={() => props.setSee(false)} className="manage-submit-button" type="submit">Create</button>
                     </div>
                 </form>
                 <div className="manage-cancel" onClick={() => props.setSee(false)}>
@@ -90,9 +89,9 @@ function AddRoom(props) {
 }
 
 export default function Dev() {
-    const [rooms, setRooms] = useState([])
-    const [see, setSee] = useState(false);
-    const [modalVisible, setModalVisible] = useState(false)
+    const [rooms, setRooms] = useState([]) // Holds Room Data
+    const [see, setSee] = useState(false); // Sets AddRoom modal visibility
+    const [modalVisible, setModalVisible] = useState(false) // Sets Room Link "modal" visibility
 
     const getRooms = async () => {
         const data = await fetch("http://127.0.0.1:8000/api/rooms/", {
@@ -107,12 +106,11 @@ export default function Dev() {
     }
 
     const LinkStyle = {
-        color: "black"
     }
 
     useEffect(() => {
         getRooms().then(data => setRooms(data))
-    }, []);
+    },);
 
     if (rooms === []) {
         return null
@@ -137,10 +135,12 @@ export default function Dev() {
                                 <th>Developer</th>
                             </tr>
                             {rooms.map((element, index) => (
-                                    <tr /*key={index}*/ className="sub-tr" onClick={() => setModalVisible(true)}>
-                                        <td><Link to={`/dashboard/room/${element.name}`} style={LinkStyle}>
-                                            {element.name}
-                                        </Link></td>
+                                    <tr key={index} className="sub-tr" onClick={() => setModalVisible(true)}>
+                                        <td>
+                                            <Link to={`/dashboard/room/${element.name}`} style={{'color': index%2===0 ? 'black' : 'white'}}>
+                                                {element.name}
+                                            </Link>
+                                        </td>
                                         <td >{element.brief_desc}</td>
                                         <td >{element.dev_name}</td>
                                     </tr>

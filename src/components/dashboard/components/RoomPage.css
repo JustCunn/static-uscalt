@@ -97,6 +97,8 @@
   display: flex;
   background-color: #e8f6ff;
   border-radius: 7px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .link-manage-info, .link-buy-info {
@@ -124,6 +126,8 @@
   display: flex;
   background-color: #e8fff9;
   border-radius: 7px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .link-display-name {
@@ -150,5 +154,10 @@
 
 .link-toggle-container:hover {
   cursor: pointer;
+}
+
+.link-manage-container:hover, .link-buy-container:hover {
+  -webkit-box-shadow: 0px 0px 5px 2px #004d81;
+          box-shadow: 0px 0px 5px 2px #004d81;
 }
 /*# sourceMappingURL=RoomPage.css.map */

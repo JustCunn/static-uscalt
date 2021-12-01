@@ -32,12 +32,16 @@
 
 tr:nth-child(1) {
   background-color: whitesmoke !important;
-  color: black !important;
+  color: black;
 }
 
 tr:nth-child(odd) {
   background-color: #004d81;
   color: white !important;
+}
+
+tr:nth-child(odd) td {
+  color: white;
 }
 
 table {

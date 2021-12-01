@@ -26,12 +26,16 @@ $uscalt-blue: #004d81;
 
 tr:nth-child(1) {
     background-color: rgb(245, 245, 245)!important;
-    color: black!important;
+    color: black;
 }
 
 tr:nth-child(odd) {
     background-color: $uscalt-blue;
     color: white!important;
+}
+
+tr:nth-child(odd) td {
+    color: white
 }
 
 table {

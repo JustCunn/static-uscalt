@@ -83,9 +83,9 @@ export default function Nav(props) {
                     <div className="nav-user-options-option" id="nav-user-options-logout" onClick={handleLogout}>
                         Sign Out
                     </div>
-                    <div className="nav-user-options-option" id="nav-user-options-theme">
+                    {/*<div className="nav-user-options-option" id="nav-user-options-theme">
                         <Switch onChange={props.onClick} checked={props.darkMode}/>
-                    </div>
+        </div>*/}
 
                 </div>
                 <div className="dash-nav-links">
@@ -110,10 +110,10 @@ export default function Nav(props) {
                             className="dash-nav-link">Transactions</Link>
                         </li>
                         <hr></hr>
-                        <li id="nav-li-preferences">
+                        {/*<li id="nav-li-preferences">
                             <Link to="#" onClick={() => setCurrentNav('preferences')} style={isClickedStylePreferences}
                             className="dash-nav-link">Preferences</Link>
-                        </li>
+    </li>*/}
                         <li id="nav-li-dev">
                             <Link to="/dashboard/dev" onClick={() => setCurrentNav('dev')} style={isClickedStyleDev}
                             className="dash-nav-link">Developer Tools</Link>

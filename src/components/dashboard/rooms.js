@@ -13,13 +13,15 @@ export default function Rooms() {
             }
         })
         .then(data => data.json())
-        .then(data => setRooms(data));
+        .then(data => {
+            setRooms(data)
+            console.log(data)
+        });
     }
 
 
     useEffect(() => {
         getRooms()
-        console.log(rooms)
     }, []);
 
     return (
