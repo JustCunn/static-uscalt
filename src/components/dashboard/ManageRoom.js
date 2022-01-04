@@ -1,9 +1,9 @@
 import { React, useState, useEffect }from 'react';
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import './ManageRoom.css';
 
-async function registerLink(name, description, room) {
-    return fetch("http://127.0.0.1:8000/api/link/register/", {
+async function registerLink(name, description, fields, room, off_id, urll) {
+    return await fetch("http://192.168.0.3:8000/api/link/register/", {
         method: "POST",
         headers: {
             'content-type': 'application/json',
@@ -11,7 +11,10 @@ async function registerLink(name, description, room) {
         body: JSON.stringify({
             "display_name": name,
             "desc": description,
-            "room": room.toString()
+            "room": room.toString(),
+            "off_id": off_id,
+            "url": urll,
+            "fields": fields
         })
     })
     .then(data => data.json())
@@ -21,6 +24,8 @@ function AddLink(props) {
     const [displayName, setDisplayName] = useState();
     const [desc, setDesc] = useState();
     const [fields, setFields] = useState();
+    const [urll, setUrl] = useState();
+    const [checked, setChecked] = useState(false);
 
     const handleDNChange = (e) => {
         setDisplayName(e.target.value)
@@ -34,8 +39,17 @@ function AddLink(props) {
         setFields(e.target.value)
     }
 
-    const handleSubmit = async e => {
-        registerLink(displayName, desc, props.room);
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        registerLink(displayName, desc, fields, props.room, checked, urll);
+    }
+
+    const handleCheck = () => {
+        setChecked(!checked);
+    };
+
+    const handleUrl = (e) => {
+        setUrl(e.target.value)
     }
 
     const addStyle = {
@@ -58,6 +72,13 @@ function AddLink(props) {
                     <div className="manage-field" id="manage-desc-name">
                         <input type="textarea" className="manage-field-input" id="manage-desc-input" 
                         placeholder="Brief Description" value={desc} onChange={handleDesc}/>
+                    </div>
+                    <div className="manage-check">
+                        <input type="checkbox" checked={checked} onChange={handleCheck}/>
+                    </div>
+                    <div style={{display: checked ? 'flex' : 'none'}} className="manage-field" id="manage-url">
+                        <input type="text" className="manage-field-input" id="manage-url-input" 
+                        placeholder="Url" value={urll} onChange={handleUrl}/>
                     </div>
                     <div className="manage-submit">
                         <button className="manage-submit-button" type="submit">Create</button>
@@ -111,7 +132,7 @@ export default function ManageRoom(props) {
                                 <th>Users</th>
                             </tr>
                             {links.map((element, index) => (
-                                    <tr /*key={index}*/ className="sub-tr">
+                                    <tr key={index} className="sub-tr">
                                         <td /*className="manage-rooms-ul-li"*/ >{element.display_name}</td>
                                         <td >{element.desc}</td>
                                         <td >{element.users.length}</td>

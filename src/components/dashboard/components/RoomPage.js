@@ -170,7 +170,7 @@ export default function RoomPage(props) {
         setInfo(roomResult)
         setLinks(userResult.mylinks)
         setLoading(false)
-    }, [links])
+    },[])
 
     return (
         <div className="page-container">
