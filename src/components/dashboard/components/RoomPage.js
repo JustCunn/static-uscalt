@@ -7,11 +7,11 @@ let uid
 //let info
 
 function download(blob, filename) {
+    /* Function to download the Response */
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.style.display = 'none';
     a.href = url;
-    // the filename you want
     a.download = filename;
     document.body.appendChild(a);
     a.click();
@@ -22,7 +22,9 @@ function download(blob, filename) {
 function LinkManageItem(props) {
 
     const toggleLink = () => {
+        /* Toggles Sharing on and off for a room link */
         if (props.uData.includes(props.link_id)) {
+            /* If data sharing was on, turn it off */
             const array = props.uData;
             const index = array.indexOf(props.link_id);
 
@@ -41,6 +43,7 @@ function LinkManageItem(props) {
             .then(() => props.setLinks(array))
         }
         else {
+            /* If data sharing was off, turn it on */
             const array = props.uData;
 
             array.push(props.link_id)
@@ -76,8 +79,8 @@ function LinkBuyItem(props) {
 
     const toggleLink = async () => {
         var fileDownload = require('js-file-download');
-        console.log(props.buyers.includes(props.uid))
-        if(!props.buyers.includes(props.uid)) {
+        if(!props.bought) {
+            /* If the user hasn't started the buying process already, begin it */
             await fetch("http://127.0.0.1:8000/api/link/buy/", {
                 method: 'POST',
                 headers: {
@@ -91,6 +94,7 @@ function LinkBuyItem(props) {
             })
         }
         else {
+            /* Download the requested data */
             const Res = await fetch(`http://127.0.0.1:8000/api/link/download/${props.link_id}/${props.uid}/`, {
                 method: 'GET',
                 headers: {
@@ -99,8 +103,20 @@ function LinkBuyItem(props) {
                 },
             })
             //.then(data => fileDownload(data.body, 'filename.csv'))
-            Res.blob().then(blob => download(blob))
+            Res.blob().then(blob => download(blob, 'data.csv'))
         }
+    }
+
+    const downloadSample = async () => {
+        const Res = await fetch(`http://127.0.0.1:8000/api/sample/${props.link_id}/`, {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": `Token ${localStorage.getItem("token")}`,
+                        //"accept": "text/csv",
+                    },
+                })
+                //.then(data => fileDownload(data.body, 'filename.csv'))
+                Res.blob().then(blob => download(blob, 'sample_data.csv'))
     }
 
     return (
@@ -109,16 +125,19 @@ function LinkBuyItem(props) {
                 <div className="link-display-name">{props.name}</div>
                 <div className="link-desc">{props.desc}</div>
             </div>
+            <div className="link-toggle-container" id="link-toggle-sample" onClick={downloadSample}>
+                Sample Data
+            </div>
             <div className="link-toggle-container" onClick={toggleLink}>
-                {props.buyers.includes(props.uid) ? "Download" : "Request Data"}
+                {props.bought ? "Download" : "Request Data"}
             </div>
         </div>
     )
 }
 
 export default function RoomPage(props) {
-    const [info, setInfo] = useState([]);
-    const [links, setLinks] = useState([]);
+    const [info, setInfo] = useState([]); // Stores Data about Room
+    const [links, setLinks] = useState([]); // Room Links
     const [isLoading, setLoading] = useState(true);
     const [userData, setUserData] = useState([]);
     const [buy, setBuy] = useState(false);
@@ -147,30 +166,37 @@ export default function RoomPage(props) {
 
     async function fetchRoom() {
 
-        const result = await fetch(`http://127.0.0.1:8000/api/room/${id}/`)
+        const result = await fetch(`http://127.0.0.1:8000/api/room/${id}/`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("token")}`
+            }
+        })
 
         return result.json()
     }
 
     const dataStyle = {
         backgroundColor: buy ? 'white' : '#004d81',
-        color: buy ? '#004d81' : 'white'
+        color: buy ? '#004d81' : 'white',
+        transition: '0.2s all ease-in-out'
     }
 
     const buyStyle = {
         color: buy ? 'white' : '#004d81',
-        backgroundColor: buy ? '#004d81' : 'white'
+        backgroundColor: buy ? '#004d81' : 'white',
+        transition: '0.2s all ease-in-out'
     }
 
     useEffect(async () => {
         uid = await fetchUID().then(data => data.id);
         const userResult = await fetchUser()
         const roomResult = await fetchRoom()
+        console.log(roomResult.links)
         setUserData(userResult)
         setInfo(roomResult)
         setLinks(userResult.mylinks)
         setLoading(false)
-    },[])
+    },[links])
 
     return (
         <div className="page-container">
@@ -192,14 +218,14 @@ export default function RoomPage(props) {
                     <div className="page-buy" style={buyStyle} onClick={() => setBuy(true)}>Retrieve Data</div>
                 </div>
                 {isLoading ? null : (
-                    buy ? (info.links.map((item, index) => (
+                    buy ? (info.links.map((item, index) => {return (
                         <LinkBuyItem key={index} name={item.display_name} desc={item.desc} link_id={item.id} uData={links} uid={uid} setLinks={setLinks}
-                                    buyers={item.buyers}/>
-                    )))
+                                    bought={item.is_bought_by_me}/>
+                    )}))
                     : (
-                    info.links.map((item, index) => (
+                    info.links.map((item, index) => {return (
                         <LinkManageItem key={index} name={item.display_name} desc={item.desc} link_id={item.id} uData={links} setLinks={setLinks}/>
-                    )))
+                    )}))
                     )}
             </div>
         </div>

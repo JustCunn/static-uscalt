@@ -63,7 +63,7 @@ $uscalt-blue: #004d81;
     margin-bottom: 1em;
     padding: 1em;
     display: flex;
-    background-color: #e8f6ff;
+    //background-color: #e8f6ff;
     border-radius: 7px;
     transition: all 0.2s ease-in-out;
 }
@@ -80,22 +80,33 @@ $uscalt-blue: #004d81;
     margin-bottom: 1em;
     padding: 1em;
     display: flex;
-    background-color: #e8fff9;
+    //background-color: #e8fff9;
     border-radius: 7px;
     transition: all 0.2s ease-in-out;
 }
 
 .link-display-name {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 24px;
+    color: $uscalt-blue;
 }
 
 
 .link-toggle-container {
     display: flex;
     height: 3em;
+    //width: 4.8em;
+    padding: 1em;
+    color: white;
     justify-content: center;
     align-items: center;
+    background-color: $uscalt-blue;
+    border-radius: 7px;
+    transition: all 0.2s ease-in-out;
+}
+
+#link-toggle-sample {
+    margin-right: 1em;
 }
 
 .page-link:hover, .page-buy:hover {
@@ -104,6 +115,7 @@ $uscalt-blue: #004d81;
 
 .link-toggle-container:hover {
     cursor: pointer;
+    font-weight: bold;
 }
 
 .link-manage-container:hover, .link-buy-container:hover {

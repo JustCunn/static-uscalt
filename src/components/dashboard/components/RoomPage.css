@@ -95,7 +95,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #e8f6ff;
   border-radius: 7px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -124,7 +123,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #e8fff9;
   border-radius: 7px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -132,7 +130,8 @@
 
 .link-display-name {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
+  color: #004d81;
 }
 
 .link-toggle-container {
@@ -140,12 +139,22 @@
   display: -ms-flexbox;
   display: flex;
   height: 3em;
+  padding: 1em;
+  color: white;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #004d81;
+  border-radius: 7px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#link-toggle-sample {
+  margin-right: 1em;
 }
 
 .page-link:hover, .page-buy:hover {
@@ -154,6 +163,7 @@
 
 .link-toggle-container:hover {
   cursor: pointer;
+  font-weight: bold;
 }
 
 .link-manage-container:hover, .link-buy-container:hover {

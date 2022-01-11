@@ -108,9 +108,18 @@ export default function Dev() {
     const LinkStyle = {
     }
 
+    const test = () => {
+        fetch("http://127.0.0.1:8000/api/test/", {
+            method: 'GET',
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("token")}`,
+            }
+        })
+    }
+
     useEffect(() => {
         getRooms().then(data => setRooms(data))
-    },);
+    }, []);
 
     if (rooms === []) {
         return null
@@ -122,6 +131,7 @@ export default function Dev() {
                 <div className="dev-room-title">
                     Manage Your Data Rooms
                 </div>
+                <div onClick={() => test()}>TEST</div>
                 <div className="dev-room-table-wrapper">
                     <div className="dev-room-table-commands">
                         <p onClick={() => setSee(true)}>+</p>

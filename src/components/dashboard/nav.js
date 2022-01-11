@@ -100,20 +100,7 @@ export default function Nav(props) {
                             <Link to="/dashboard/rooms/manage" onClick={() => setCurrentNav('rooms')} style={isClickedStyleRooms}
                             className="dash-nav-link">Find & Manage App Rooms</Link>  
                         </li>
-                        {/*<li id="nav-li-search">
-                            <Link to="/dashboard/home" onClick={() => setCurrentNav('search')} style={isClickedStyleSearch}
-                            className="dash-nav-link">Find Data Rooms</Link> 
-        </li>*/}
                         <hr></hr>
-                        <li id="nav-li-transactions">
-                            <Link to="#" onClick={() => setCurrentNav('transactions')} style={isClickedStyleTransactions}
-                            className="dash-nav-link">Transactions</Link>
-                        </li>
-                        <hr></hr>
-                        {/*<li id="nav-li-preferences">
-                            <Link to="#" onClick={() => setCurrentNav('preferences')} style={isClickedStylePreferences}
-                            className="dash-nav-link">Preferences</Link>
-    </li>*/}
                         <li id="nav-li-dev">
                             <Link to="/dashboard/dev" onClick={() => setCurrentNav('dev')} style={isClickedStyleDev}
                             className="dash-nav-link">Developer Tools</Link>
