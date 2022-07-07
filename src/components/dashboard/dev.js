@@ -1,3 +1,5 @@
+// Dev dashboard
+
 import { React, useState, useEffect }from 'react';
 import { Link } from "react-router-dom";
 import './dev.css';
@@ -131,7 +133,6 @@ export default function Dev() {
                 <div className="dev-room-title">
                     Manage Your Data Rooms
                 </div>
-                <div onClick={() => test()}>TEST</div>
                 <div className="dev-room-table-wrapper">
                     <div className="dev-room-table-commands">
                         <p onClick={() => setSee(true)}>+</p>

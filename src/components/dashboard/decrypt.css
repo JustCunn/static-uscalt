@@ -1,0 +1,120 @@
+.decrypt-title {
+  font-size: 64px;
+  font-weight: bolder;
+  color: #004d81;
+  padding-bottom: 0.7em;
+}
+
+.decrypt-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.decrypt-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 25em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.f-upload-custom input[type=file] {
+  display: none;
+}
+
+.f-upload-custom {
+  height: 3em;
+  width: 40em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 6px 12px;
+  border-radius: 7px;
+  background-color: #004d81;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  -webkit-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
+}
+
+.decrypt-t-input {
+  width: 40em;
+  height: 3em;
+  margin-bottom: 1em;
+}
+
+.decrypt-t-input input {
+  border-radius: 7px;
+  border-color: #004d81;
+  border-style: solid;
+  border-width: 3px;
+  height: 100%;
+  width: 100%;
+}
+
+.decrypt-submit {
+  background-color: #004d81;
+  color: white;
+  width: 40em;
+  height: 3em;
+  border-radius: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
+}
+
+.decrypt-title-card {
+  color: #004d81;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.decrypt-submit:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #004d81;
+  border: #004d81;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.f-upload-custom:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #004d81;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #004d81;
+}
+/*# sourceMappingURL=decrypt.css.map */

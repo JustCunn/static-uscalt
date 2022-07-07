@@ -1,3 +1,5 @@
+// Manage Room modal
+
 import { React, useState, useEffect }from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import './ManageRoom.css';
@@ -75,8 +77,8 @@ function AddLink(props) {
     }
 
     const urlStyle= {
-        display: checked ? 'flex' : 'none',
-        display: needed ? 'flex' : 'none',
+        display: (checked || needed) ? 'flex' : 'none',
+        //display: needed ? 'flex' : 'none',
     }
 
     return (

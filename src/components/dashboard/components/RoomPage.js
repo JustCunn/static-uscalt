@@ -103,7 +103,11 @@ function LinkBuyItem(props) {
                 },
             })
             //.then(data => fileDownload(data.body, 'filename.csv'))
-            Res.blob().then(blob => download(blob, 'data.csv'))
+            if ((props.offsite === true) || (props.data_needed === true)) {
+                Res.blob().then(blob => download(blob, 'data.txt'));
+            } else {
+                Res.blob().then(blob => download(blob, 'data.csv'))
+            }
         }
     }
 
@@ -220,7 +224,7 @@ export default function RoomPage(props) {
                 {isLoading ? null : (
                     buy ? (info.links.map((item, index) => {return (
                         <LinkBuyItem key={index} name={item.display_name} desc={item.desc} link_id={item.id} uData={links} uid={uid} setLinks={setLinks}
-                                    bought={item.is_bought_by_me}/>
+                                    bought={item.is_bought_by_me} offsite={item.offsite} data_needed={item.data_needed}/>
                     )}))
                     : (
                     info.links.map((item, index) => {return (

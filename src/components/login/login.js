@@ -4,7 +4,7 @@ import axios from 'axios';
 import './login.css';
 
 async function loginUser(username, password) {
-    return fetch("http://192.168.0.3:8000/login/", {
+    return fetch("http://127.0.0.1:8000/login/", {
         method: 'POST',
         headers: {
             'content-type': 'application/json',

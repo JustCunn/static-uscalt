@@ -1,0 +1,92 @@
+$uscalt-blue: #004d81;
+
+.decrypt-title {
+    font-size: 64px;
+    font-weight: bolder;
+    color: $uscalt-blue;
+    padding-bottom: 0.7em;
+}
+
+.decrypt-container {
+    display: flex;
+    height: 40em;
+    justify-content: center;
+    align-items: center;
+}
+
+.decrypt-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 25em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-upload-custom input[type=file] {
+    display: none;
+}
+
+.f-upload-custom {
+    height: 3em;
+    width: 40em;
+    display: flex;
+    padding: 6px 12px;
+    border-radius: 7px;
+    background-color: $uscalt-blue;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: 0.2s ease-in-out all;
+}
+
+.decrypt-t-input {
+    width: 40em;
+    height: 3em;
+    margin-bottom: 1em;
+}
+
+.decrypt-t-input input {
+    border-radius: 7px;
+    border-color: $uscalt-blue;
+    border-style: solid;
+    border-width: 3px;
+    height: 100%;
+    width: 100%;
+}
+
+.decrypt-submit {
+    background-color: $uscalt-blue;
+    color: white;
+    width: 40em;
+    height: 3em;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out all;
+}
+
+.decrypt-title-card {
+    color: $uscalt-blue;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.decrypt-submit:hover {
+    cursor: pointer;
+    background-color: white;
+    color: $uscalt-blue;
+    border: $uscalt-blue;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.f-upload-custom:hover {
+    cursor: pointer;
+    background-color: white;
+    color: $uscalt-blue;
+    border-style: solid;
+    border-width: 3px;
+    border-color: $uscalt-blue;
+}

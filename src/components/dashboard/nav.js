@@ -58,6 +58,11 @@ export default function Nav(props) {
         color: (currentNav === 'dev') ? '#004d81' : null
     }
 
+    const isClickedStyleDecrypt = {
+        backgroundColor: (currentNav === 'decrypt') ? 'white' : null,
+        color: (currentNav === 'decrypt') ? '#004d81' : null
+    }
+
     const getUsername = async () => {
         //Fetches username from server
         await fetch("http://127.0.0.1:8000/api/profile/", {
@@ -99,6 +104,10 @@ export default function Nav(props) {
                         <li id="nav-li-rooms">
                             <Link to="/dashboard/rooms/manage" onClick={() => setCurrentNav('rooms')} style={isClickedStyleRooms}
                             className="dash-nav-link">Find & Manage App Rooms</Link>  
+                        </li>
+                        <li id="nav-li-rooms">
+                            <Link to="/dashboard/decrypt" onClick={() => setCurrentNav('decrypt')} style={isClickedStyleDecrypt}
+                            className="dash-nav-link">Decrypt data file</Link>  
                         </li>
                         <hr></hr>
                         <li id="nav-li-dev">

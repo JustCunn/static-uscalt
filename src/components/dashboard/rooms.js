@@ -1,3 +1,5 @@
+// "Find & Manage Rooms" page
+
 import { React, useState, useEffect } from 'react';
 import RoomBlock from './RoomBlock.js';
 import './rooms.css';

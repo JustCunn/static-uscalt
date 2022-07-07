@@ -1,3 +1,5 @@
+// Room block component -> Used in the "Find and Manage Rooms" tab
+
 import { React, useState, useLayoutEffect, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './RoomBlock.css';

@@ -19,7 +19,7 @@ class Email extends React.Component {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "email-form", ...this.state })
       })
-        .then(() => alert("Thanks for your interest in Uscalt! We hopt to be in touch soon."))
+        .then(() => alert("Thanks for your interest in Uscalt! We hope to be in touch soon."))
         .catch(error => alert(Error));
 
       e.preventDefault();
